@@ -57,9 +57,28 @@ printf("The barber is going home for the day.\n");
 }
 void rwait(int sec) {
 int len;
-// Generate a random number…
+// Generate a random numberâ€¦
 len = (int) ((1 * sec) + 1);
 sleep(len);
+}
+
+int main(int argc, char *argv[]) 
+{
+pthread_t btid;
+pthread_t tid[MAX];
+int i, ncu, nc;
+int Number[MAX];
+
+printf("Enter the number of Customers : "); 
+scanf("%d",&ncu) ;
+printf("Enter the number of Charis : "); scanf("%d",&nc);
+
+if (ncu > MAX) {
+printf("The maximum number of Customers is %d.\n", MAX);
+exit(-1);
+}
+for (i=0; i<MAX; i++) {
+Number[i] = i;
 }
 
 
