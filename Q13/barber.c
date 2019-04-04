@@ -80,5 +80,28 @@ exit(-1);
 for (i=0; i<MAX; i++) {
 Number[i] = i;
 }
+  
+sem_init(&wr, 0, nc);
+sem_init(&bchair, 0, 1);
+sem_init(&bp, 0, 0);
+sem_init(&wait2, 0, 0);
+
+pthread_create(&btid, NULL, barb, NULL);
+
+for (i=0; i<ncu; i++) {
+pthread_create(&tid[i], NULL, cust, (void *)&Number[i]);
+sleep(1);
+}
+
+for (i=0; i<ncu; i++) {
+pthread_join(tid[i],NULL);
+sleep(1);
+}
+
+finish= 1;
+sem_post(&bp); // Wake the barber
+pthread_join(btid,NULL);
+}
+
 
 
