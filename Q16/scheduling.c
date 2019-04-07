@@ -25,15 +25,15 @@ int main()
   printf("\n\nProcess\t|Turnaround Time|Waiting Time\n\n"); 
   for(ti=0,c=0;re!=0;) 
   { 
-    if(rt[c]<=quan && rt[c]>0) 
+    if(rt[c]<=quan && rt[c]>0) //loop ealuation from remaining time in the queue
     { 
       ti+=rt[c]; 
       rt[c]=0; 
       check=1; 
     } 
-    else if(rt[c]>0) 
+    else if(rt[c]>0)
     { 
-      rt[c]-=quan; 
+      rt[c]-=quan;                   //preempting on the basis of time quanta scheduling processes having short execution time first.
       ti+=quan; 
     } 
     if(rt[c]==0 && check==1) 
@@ -58,7 +58,7 @@ int main()
 	   c=0; 
 }
   } 
-  printf("\nAverage Waiting Time= %f\n",wt*1.0/pro); 
+  printf("\nAverage Waiting Time= %f\n",wt*1.0/pro); //printing the average waiting time and average turnaround time
   printf("Average Turnaround Time = %f",tat*1.0/pro); 
 
   return 0; 
