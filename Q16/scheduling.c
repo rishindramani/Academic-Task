@@ -31,3 +31,35 @@ int main()
       rt[c]=0; 
       check=1; 
     } 
+    else if(rt[c]>0) 
+    { 
+      rt[c]-=quan; 
+      ti+=quan; 
+    } 
+    if(rt[c]==0 && check==1) 
+    { 
+      re--; 
+      printf("P[%d]\t|\t%d\t|\t%d\n",c+1,ti-at[c],ti-at[c]-bt[c]); 
+      wt+=ti-at[c]-bt[c]; 
+      tat+=ti-at[c]; 
+      check=0; 
+    } 
+    if(c==pro-1) 
+    {
+	
+      c=0; 
+    }
+	else if(at[c+1]<=ti) 
+    {
+	   c++; 
+    }
+	else 
+    {
+	   c=0; 
+}
+  } 
+  printf("\nAverage Waiting Time= %f\n",wt*1.0/pro); 
+  printf("Average Turnaround Time = %f",tat*1.0/pro); 
+
+  return 0; 
+}
